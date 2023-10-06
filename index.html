@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suma de Manzanas</title>
+    <style>
+        body {
+    background-image: url('fondo.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+}
+        .container{
+            max-width: 6000px;
+            margin: 0 auto;
+            padding: 200px;
+            border: 1px solid#ccc;
+            text-align: center;
+        
+        }
+        .grupo {
+            border: 1px solid #eee;
+            padding: 10px;
+            margin: 10px; /* Agrega margen alrededor de cada grupo */
+            display: inline-block;
+        }
+          img {
+            max-width: 100px;
+            max-height: 100px;
+            display: grid;
+            margin-top: 1px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bolder;
+        }
+        .apple-block {
+            display: inline-block;
+            vertical-align: top;
+            margin: 20px;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        .result-message {
+            font-weight: bolder;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .happy-face, .sad-face {
+            font-size: 40px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #004HEE;
+            color: red;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<center>
+<body>
+    <div class="container">
+        <h1>Suma de Peras</h1>
+
+        <button id="generar">Generar</button>
+
+        <script>
+            var num1, num2, resultado;
+
+            function generarNumeros() {
+                // Generar dos números aleatorios entre 1 y 10
+                num1 = Math.floor(Math.random() * 10) + 1;
+                num2 = Math.floor(Math.random() * 10) + 1;
+                
+                // Calcular la suma de los números
+                resultado = num1 + num2;
+
+                // Mostrar números y manzanas
+                mostrarNumerosYManzanas();
+            }
+
+            function mostrarNumerosYManzanas() {
+                var num1Element = document.getElementById("num1");
+                var num2Element = document.getElementById("num2");
+                var appleBlockA = document.getElementById("apple-block-a");
+                var appleBlockB = document.getElementById("apple-block-b");
+
+                
+
+                appleBlockA.innerHTML = '';
+                appleBlockB.innerHTML = '';
+
+                for (var i = 0; i < num1; i++) {
+                    appleBlockA.innerHTML += '<img src="PERA.jpg" alt="Pera">';
+                }
+
+                for (var j = 0; j < num2; j++) {
+                    appleBlockB.innerHTML += '<img src="PERA.jpg" alt="Pera">';
+                }
+            }
+
+            function verificarResultado() {
+                var respuestaInput = document.getElementById("respuesta");
+                var resultMessage = document.getElementById("result-message");
+                var respuesta = parseInt(respuestaInput.value);
+
+                // Verificar si la respuesta es correcta
+                if (respuesta === resultado) {
+                    resultMessage.innerHTML = 'Respuesta Correcta';
+                } else {
+                    resultMessage.innerHTML = 'Respuesta Incorrecta';
+                }
+            }
+
+            // Asociar la función de generar números al botón "Generar"
+            var generarButton = document.getElementById("generar");
+            generarButton.addEventListener("click", generarNumeros);
+        </script>
+
+        <div class="apple-block">
+            
+            <label for="sumandoA"> <span id="num1"></span></label>
+            <div id="apple-block-a"></div>
+        </div>
+
+        <div class="apple-block">
+            
+            <label for="sumandoB"> <span id="num2"></span></label>
+            <div id="apple-block-b"></div>
+        </div>
+
+        <form>
+            <label for="respuesta">Ingresa la suma de las Peras:</label>
+            <input type="number" id="respuesta" required>
+            <button type="button" onclick="verificarResultado()">Verificar</button>
+        </form>
+        
+        <label for="respuesta">DESARROLLADO POR: LUIS FERNANDO MEDINA MONTOYA</label>
+
+        <div class="result-message" id="result-message"></div>
+    </div>
+</body>
+</center>
+</html>
+
+
+
